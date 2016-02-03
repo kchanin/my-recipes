@@ -3,7 +3,7 @@ require 'test_helper'
   class ChefTest < ActiveSupport::TestCase
     
     def setup
-      @chef = Chef.new(chefname: "My Name", email: "this@example.come")
+      @chef = Chef.new(chefname: "My Name", email: "this@example.come", password: "password")
     end
     
     test "chef should be valid" do
