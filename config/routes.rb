@@ -5,7 +5,7 @@ Rails.application.routes.draw do
  
  
 
- resources :chefs, except: [:new]
+ resources :chefs, except: [:new, :destroy]
  
  get '/register', to: 'chefs#new'
  

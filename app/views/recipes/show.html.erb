@@ -10,8 +10,11 @@
   </div>
   <div class="col-md-8">
       
-      <% if logged_in? and @recipe.chef_id == current_user.id  %>
+      <% if logged_in? and (@recipe.chef_id == current_user.id or current_user.admin) %>
             <%=link_to "Edit this recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
+      <% end %>
+      <% if current_user.admin? %>
+        <%= link_to "[Delete Recipe]", @recipe, method: :delete, data: {confirm: "Are you sure?" } %>
       <% end %>
       
     <h3><%= @recipe.summary %></h3>
@@ -41,6 +44,7 @@
           <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
             <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= @recipe.thumbs_down_total %>
           <% end %>
+          
   
       </div>
     </div>
